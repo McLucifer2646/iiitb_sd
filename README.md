@@ -21,7 +21,7 @@ A sequence detector is a sequential circuit that has an output of HIGH if a spec
 ## Block Diagram of Sequence Detector
 
 <p align="center">
-  <img width="850" height="300" src="/Images/IMG3.jpg">
+  <img width="900" height="300" src="/Images/IMG3.jpg">
 </p>
 
 
