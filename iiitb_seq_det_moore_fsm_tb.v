@@ -20,7 +20,7 @@ module tb_Sequence_Detector_Moore_FSM_Verilog;
   .detector_out(detector_out)
  );
  initial begin
- $dumpfile("test.vcd");
+ $dumpfile("seq_det.vcd");
  $dumpvars(0, tb_Sequence_Detector_Moore_FSM_Verilog);
  clock = 0;
  forever #5 clock = ~clock;
