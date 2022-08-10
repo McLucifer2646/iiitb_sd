@@ -8,7 +8,7 @@ This project simulates the design of a Sequence Detector built using the MOORE F
 A sequence detector is a sequential circuit that has an output of HIGH if a specific pattern of bits arrives as input otherwise it continues to be LOW. Moore FSMs are the ones whose output value is determined using only its current state and thus the output value is independent of the previous input values.
 
 <p align="center">
-  <img width="400" height="400" src="/Images/IMG1.jpg">
+  <img width="500" height="500" src="/Images/IMG1.jpg">
 </p>
 
 ## Applications
