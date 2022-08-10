@@ -53,7 +53,7 @@ $   gtkwave seq_det.vcd
 In this simultion result we observe three waveform namely Clock(clk), Sequence Input and Detected Output. We also observe that around 160ns the Detector displays a HIGH signal indicating that the given sequence of '1111' was detected succesfully.
 
 <p align="center">
-  <img width="800" height="300" src="IMG2.jpg">
+  <img width="800" height="300" src="/Images/IMG2.jpg">
 </p>
 
 
@@ -112,5 +112,5 @@ $   yosys>    show
  https://en.wikipedia.org/wiki/Moore_machine
 - Study.com
  https://study.com/academy/lesson/practical-application-for-computer-architecture-sequential-circuits.html#:~:text=A%20sequence%20detector%20is%20a,detectors%2C%20this%20is%20not%20allowed.
--Applications
+- Applications
  https://whomadewhat.org/what-are-applications-of-sequence-detector/
