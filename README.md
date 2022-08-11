@@ -110,11 +110,7 @@ $   yosys>    show
 - Kunal Ghosh, Director, VSD Corp. Pvt. Ltd. kunalghosh@gmail.com
 
 ## References:
-- FPGA4Student
- https://www.fpga4student.com/2017/09/verilog-code-for-moore-fsm-sequence-detector.html
-- Wikipedia
- https://en.wikipedia.org/wiki/Moore_machine
-- Study.com
- https://study.com/academy/lesson/practical-application-for-computer-architecture-sequential-circuits.html#:~:text=A%20sequence%20detector%20is%20a,detectors%2C%20this%20is%20not%20allowed.
-- Applications
- https://whomadewhat.org/what-are-applications-of-sequence-detector/
+- [FPGA4Student](https://www.fpga4student.com/2017/09/verilog-code-for-moore-fsm-sequence-detector.html)
+- [Wikipedia](https://en.wikipedia.org/wiki/Moore_machine)
+- [Study.com](https://study.com/academy/lesson/practical-application-for-computer-architecture-sequential-circuits.html#:~:text=A%20sequence%20detector%20is%20a,detectors%2C%20this%20is%20not%20allowed.)
+- [Applications](https://whomadewhat.org/what-are-applications-of-sequence-detector/)
