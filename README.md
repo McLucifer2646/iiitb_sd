@@ -1,4 +1,4 @@
-# iiitb_physical_design_of_asics -> Sequence Detection using Moore FSM
+# iiitb_sd -> Sequence Detection using Moore FSM
 
 This project simulates the design of a Sequence Detector built using the MOORE FSM logic. We can detect a pre-decided 4 bit sequence and provide an output high when the sequence is detected. The following circuit design can detect overlapping sequences.
 
