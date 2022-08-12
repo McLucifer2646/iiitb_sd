@@ -57,7 +57,7 @@ $   gtkwave seq_det.vcd
 In this simultion result we observe three waveform namely Clock(clk), Sequence Input and Detected Output. We also observe that around 160ns the Detector displays a HIGH signal indicating that the given sequence of '1111' was detected succesfully.
 
 <p align="center">
-  <img width="800" height="300" src="/Images/IMG2.jpg">
+  <img width="800" height="300" src="/Images/IMG4.jpg">
 </p>
 
 
