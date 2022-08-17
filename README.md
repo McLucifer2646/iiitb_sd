@@ -82,7 +82,7 @@ $   yosys
 $   yosys>    script yosys_run.sh
 ```
 
-#### to see diffarent types of cells after synthesys
+#### to see different types of cells after synthesys
 ```
 $   yosys>    stat
 ```
