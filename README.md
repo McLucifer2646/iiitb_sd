@@ -132,6 +132,8 @@ In this simultion result we observe three waveform namely Clock(clk), Sequence I
   <img width="1600" height="200" src="/Images/IMG4.png">
 </p>
 
+### Netlist representation
+
 <p align="center">
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
 </p>
