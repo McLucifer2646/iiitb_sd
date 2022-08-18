@@ -42,15 +42,87 @@ $   sudo apt-get update
 $   sudo apt-get install iverilog gtkwave
 ```
 
-### Functional Simulation
+## Functional Simulation
 To clone the Repository and download the Netlist files for Simulation, enter the following commands in your terminal.
 ```
 $   sudo apt install -y git
 $   git clone https://github.com/McLucifer2646/iiitb_physical_design_of_asics.git
+
 $   cd iiitb_physical_design_of_asics
+
 $   iverilog iiitb_seq_det_moore_fsm.v iiitb_seq_det_moore_fsm_tb.v
 $   ./a.out
-$   gtkwave seq_det.vcde
+$   gtkwave seq_det.vcd
+```
+
+## Synthesis of verilog code
+
+### What is Yosys ??
+Yosys stands for "Yosys Open SYnthesis Suite". Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. For more information refer to the link attached below:
+- https://yosyshq.net/yosys/
+
+To install yosys follow the instructions in this GitHub repository
+
+- https://github.com/YosysHQ/yosys
+
+To just run commnds in this repository and for simpler installations in Ubuntu:
+```
+$   sudo apt-get install yosys 
+```
+*Note: Identify the .lib file path in cloned folder and change the path in highlighted text to indentified path*
+
+
+### Synthesis
+Synthesis transforms the simple RTL design into a gate-level netlist with all the constraints as specified by the designer. In simple language, Synthesis is a process that converts the abstract form of design to a properly implemented chip in terms of logic gates.
+
+**The two methods to proceed with the synthesis process are as follows:**
+#### Method 1 - Using direct Commands
+
+Invoke 'yosys' and execute the below commands to perform the synthesis of the above circuit.
+
+```
+$   yosys
+$   yosys>    read_liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+$   yosys>    read_verilog iiitb_seq_det_moore_fsm.v
+
+$   yosys>    synth -top Sequence_Detector_MOORE_Verilog
+
+$   yosys>    abc -liberty ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+$   yosys>    clean
+
+$   yosys>    write_verilog -noattr iiitb_sqd_synth.v
+```
+
+#### Method 2 - Using script file
+The above commandscan all be run in a single step by executing the script file after invoking 'yosys' terminal.
+```
+$   yosys
+$   yosys>    script yosys_run.sh
+```
+
+*Now the synthesized netlist is written in "iiitb_sqd_synth.v" file.*
+
+### To view different types of cells after Synthesis
+```
+$   yosys>    stat
+```
+### To view the generated Schemantics
+```
+$   yosys>    show
+```
+
+### Gate Level Simulation (GLS)
+GLS generates the simulation output by running test bench along with the netlist file generated from synthesis as design under test. 
+
+Netlist is logically same as RTL code, therefore, same test bench can be used for it. We perform this to verify logical correctness of the design after synthesizing it. Also ensuring the timing of the design is satisfied. 
+
+**Following are the commands to run the GLS simulation:**
+```
+$   iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 verilog_model/primitives.v verilog_model/sky130_fd_sc_hd.v iiitb_sqd_synth.v iiitb_seq_det_moore_fsm_tb.v
+$   ./a.out
+$   gtkwave seq_det.vcd
 ```
 
 ## Functional Characteristics
@@ -60,37 +132,31 @@ In this simultion result we observe three waveform namely Clock(clk), Sequence I
   <img width="1600" height="200" src="/Images/IMG4.png">
 </p>
 
+### Netlist representation
 
-## Synthesis of verilog code (WORK IN PROGRESS)
+<p align="center">
+  <img width="1600" height="200" src="/Images/Netlist.png">
+</p>
 
-#### About Yosys
-Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains.
+### Statistics after Synthesis
 
-- more at https://yosyshq.net/yosys/
+<p align="center">
+  <img width="1600" height="200" src="/Images/Stats.png">
+</p>
 
-To install yosys follow the instructions in  this github repository
+### Pre Synthesis Simulation Result (O1)
 
-https://github.com/YosysHQ/yosys
+<p align="center">
+  <img width="1600" height="200" src="/Images/Pre_Synthesis.png">
+</p>
 
-- note: Identify the .lib file path in cloned folder and change the path in highlighted text to indentified path
+### Post Synthesis Simulation Result (O2)
 
-*Note: To be further updated in future classes.*
+<p align="center">
+  <img width="1600" height="200" src="/Images/Post_Synthesis.png">
+</p>
 
-#### to synthesize
-```
-$   yosys
-$   yosys>    script yosys_run.sh
-```
-
-#### to see different types of cells after synthesys
-```
-$   yosys>    stat
-```
-#### to generate schematics
-```
-$   yosys>    show
-```
-
+**Here we observe that the pre-synthesis output O1 is equal to the post-synthesis output (O2).**
 
 ## Contributors 
 
@@ -98,9 +164,7 @@ $   yosys>    show
 - **Kunal Ghosh** 
 
 
-
 ## Acknowledgments
-
 
 - Kunal Ghosh, Director, VSD Corp. Pvt. Ltd.
 
@@ -113,4 +177,5 @@ $   yosys>    show
 - [FPGA4Student](https://www.fpga4student.com/2017/09/verilog-code-for-moore-fsm-sequence-detector.html)
 - [Wikipedia](https://en.wikipedia.org/wiki/Moore_machine)
 - [Study.com](https://study.com/academy/lesson/practical-application-for-computer-architecture-sequential-circuits.html#:~:text=A%20sequence%20detector%20is%20a,detectors%2C%20this%20is%20not%20allowed.)
+- [Yosys](https://yosyshq.net/yosys/)
 - [Applications](https://whomadewhat.org/what-are-applications-of-sequence-detector/)
