@@ -135,25 +135,25 @@ In this simultion result we observe three waveform namely Clock(clk), Sequence I
 ### Netlist representation
 
 <p align="center">
-  <img width="1600" height="200" src="/Images/Netlist.png">
+  <img width="1490" height="782" src="/Images/Netlist.png">
 </p>
 
 ### Statistics after Synthesis
 
 <p align="center">
-  <img width="1600" height="200" src="/Images/Stats.png">
+  <img width="386" height="373" src="/Images/Stats.png">
 </p>
 
 ### Pre Synthesis Simulation Result (O1)
 
 <p align="center">
-  <img width="1600" height="200" src="/Images/Pre_Synthesis.png">
+  <img width="1345" height="260" src="/Images/Pre_Synthesis.png">
 </p>
 
 ### Post Synthesis Simulation Result (O2)
 
 <p align="center">
-  <img width="1600" height="200" src="/Images/Post_Synthesis.png">
+  <img width="1345" height="260" src="/Images/Post_Synthesis.png">
 </p>
 
 **Here we observe that the pre-synthesis output O1 is equal to the post-synthesis output (O2).**
