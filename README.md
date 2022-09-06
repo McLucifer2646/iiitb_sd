@@ -158,6 +158,226 @@ In this simultion result we observe three waveform namely Clock(clk), Sequence I
 
 **Here we observe that the pre-synthesis output O1 is equal to the post-synthesis output (O2).**
 
+
+**The process of LAYOUT begins from here**
+
+## Python Installation
+
+```
+$   sudo apt install -y build-essential python3 python3-venv python3-pip
+```
+
+## Docker Installation
+```
+$   sudo apt-get update
+
+$   sudo apt-get install docker docker-compose
+
+$   sudo systemctl start docker
+
+$   sudo docker run hello-world
+```
+
+*If the docker is successfully installed u will get a success message here*
+
+
+## OpenLANE Installation
+
+OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout and a number of custom scripts for design exploration and optimization. The flow performs full ASIC implementation steps from RTL all the way down to GDSII.
+
+To run this design as per screenshots go to your design folder and perform the cloning process, else go to home directory and perform the commands nothing will change except the paths in the magic commandline.
+
+```
+$   git clone https://github.com/The-OpenROAD-Project/OpenLane.git
+
+$   cd OpenLane/
+
+$   make
+
+$   make test
+```
+
+After 43 steps, if it ended with saying Basic test passed then open lane installed succesfully.
+
+## Magic Installation
+
+For Magic to be installed and for it to work properly the following softwares have to be installed first:
+```
+$   sudo apt-get install m4 
+
+$   sudo apt-get install tcsh
+
+$   sudo apt-get install csh
+
+$   sudo apt-get install libx11-dev
+
+$   sudo apt-get install tcl-dev tk-dev
+
+$   sudo apt-get install libcairo2-dev
+
+$   sudo apt-get install mesa-common-dev libglu1-mesa-dev
+
+$   sudo apt-get install libncurses-dev
+```
+
+Installing Magic
+
+```
+$   git clone https://github.com/RTimothyEdwards/magic
+
+$   cd magic
+
+$   ./configure
+
+$   make
+
+$   make install
+```
+
+## Creating a Custom Inverter Cell
+
+A Custom Inverter Cell is required to create an inverter that can be tweaked based on our requirements and locally used in our design files. 
+
+Open Terminal in the folder you want to create a custom inverter cell and run the following commands.
+
+```
+$   git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+
+$   cd vsdstdcelldesign
+
+$   cp ./libs/sky130A.tech sky130A.tech
+
+$   magic -T sky130A.tech sky130_inv.mag &
+```
+
+Two windows pop up when we run the above magic command, The first window is the Magic Viewport and the second window is the TCL console. 
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+The above layout can be seen in the magic viewport.The design can be verified here and different  layers can be seen and examined by selecting the area of examination and typeing ```what``` in the tcl window. 
+
+To extract Spice netlist, Type the following commands in tcl window.
+```
+%   extract all
+
+%   ext2spice cthresh 0 rthresh 0
+
+%   ext2spice
+```
+
+*Note that the ```cthresh 0 rthresh 0``` are used to extract parasitic capacitances from the cell.*
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+After this step,
+
+The spice netlist has to be edited to add the libraries we are using. To edit the spice netlist navigate to the ```vsdstdcelldesign``` directory and look for ```sky130_inv.spice``` file and edit it as shown below. 
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+
+The final spice netlist should look like the following:
+```
+* SPICE3 file created from sky130_inv.ext - technology: sky130A
+
+.option scale=0.01u
+.include ./libs/pshort.lib
+.include ./libs/nshort.lib
+
+
+M1001 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
+M1000 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=37 l=23
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+C0 Y VPWR 0.08fF
+C1 A Y 0.02fF
+C2 A VPWR 0.08fF
+C3 Y VGND 0.18fF
+C4 VPWR VGND 0.74fF
+
+
+.tran 1n 20n
+.control
+run
+.endc
+.end
+```
+Save the above editted file and install the ngspice tool using the following command:
+```
+$   sudo apt-get install ngspice
+```
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+Now you can plot the graphs for the designed inverter model. Type the following command in the ngspice console.
+
+```
+->  plot y vs time a
+```
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+Four timing parameters are used to characterize the inverter standard cell:
+
+1. Rise time: Time taken for the output to rise from 20% of max value to 80% of max value<br>
+        `Rise time = (2.23843 - 2.17935) = 59.08ps`
+2. Fall time- Time taken for the output to fall from 80% of max value to 20% of max value<br>
+        `Fall time = (4.09291 - 4.05004) = 42.87ps`
+3. Cell rise delay = time(50% output rise) - time(50% input fall)<br>
+        `Cell rise delay = (2.20636 - 2.15) = 56.36ps`  
+4. Cell fall delay  = time(50% output fall) - time(50% input rise)<br>
+        `Cell fall delay = (4.07479 - 4.05) = 24.79ps`
+        
+
+To get a grid and to ensure the ports are placed correctly we can use this command in the tcl console
+
+```
+%   grid 0.46um 0.34um 0.23um 0.17um
+```
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+To save the file with a different name, use the folllowing command in tcl window
+```
+%   save sky130_vsdinv.mag
+```
+
+Now open the sky130_vsdinv.mag using the magic command in terminal
+
+```
+$   magic -T sky130A.tech sky130_vsdinv.mag
+```
+
+In the tcl window type the following command to generate sky130_vsdinv.lef
+```
+$ lef write
+```
+
+*A new sky130_vsdinv.lef file be created in the current directory.*
+
+## Layout
+
+### Preparatory Steps
+The layout for the design we have been working on can be created using OpenLANE. But before this we have to perform some preparatory steps to run our custom design in OpenLANE. Navigate to the openlane folder and run the following commands:
+
+
+
+
+
+
 ## Contributors 
 
 - **Anshul Madurwar** 
