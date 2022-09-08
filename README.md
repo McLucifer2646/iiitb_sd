@@ -518,12 +518,16 @@ Details of the gates used
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/gates.png">
 </p>
 
-<!-- Setup and Hold Slack after synthesis
+Setup and Hold Slack after synthesis
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
-</p> -->
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/synth_vcd.png">
+</p>
 
+**The sky130_vsdinv should also reflect in your netlist after Synthesis**
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/synth_vsd1.png">
+</p>
 
 ### Floorplan
 
@@ -570,6 +574,9 @@ Zoomed in view of Stacked components before placement.
 ```
 %   run_placement
 ```
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement.png">
+</p>
 
 #### Placement Report
 
@@ -582,7 +589,7 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
 #### Placement view
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement_1.png">
 </p>
 
 We can also locate the sky130_vsdinv in this view:
@@ -591,7 +598,7 @@ We can also locate the sky130_vsdinv in this view:
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement_2.png">
 </p>
 
-**The sky130_vsdinv should also reflect in your netlist after plcement**
+**The sky130_vsdinv should also reflect in your netlist after placement**
 <p align="center">
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement_vsd.png">
 </p>
@@ -601,7 +608,6 @@ We can also locate the sky130_vsdinv in this view:
 ```
 %   run_cts
 ```
-
 <p align="center">
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/cts_1234.png">
 </p>
