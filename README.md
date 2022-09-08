@@ -202,6 +202,10 @@ $   make test
 
 After 43 steps, if it ended with saying Basic test passed then open lane installed succesfully.
 
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/testpassed.png">
+</p>
+
 ## Magic Installation
 
 For Magic to be installed and for it to work properly the following softwares have to be installed first:
@@ -256,7 +260,7 @@ $   magic -T sky130A.tech sky130_inv.mag &
 Two windows pop up when we run the above magic command, The first window is the Magic Viewport and the second window is the TCL console. 
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/inverter.png">
 </p>
 
 The above layout can be seen in the magic viewport.The design can be verified here and different  layers can be seen and examined by selecting the area of examination and typeing ```what``` in the tcl window. 
@@ -273,7 +277,7 @@ To extract Spice netlist, Type the following commands in tcl window.
 *Note that the ```cthresh 0 rthresh 0``` are used to extract parasitic capacitances from the cell.*
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/console.png">
 </p>
 
 After this step,
@@ -315,6 +319,11 @@ run
 Save the above editted file and install the ngspice tool using the following command:
 ```
 $   sudo apt-get install ngspice
+```
+Next open the terminal in the directory where ngspice is stored and type the following command, ngspice console will open:
+
+```
+$   ngspice sky130_inv.spice 
 ```
 
 <p align="center">
