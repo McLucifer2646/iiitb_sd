@@ -539,13 +539,13 @@ Setup and Hold Slack after synthesis
 **Die Area**:
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/die_area.png">
 </p>
 
 **Core Area**:
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/core_area.png">
 </p>
 
 Navigate to results -> floorplan and type the Magic command in terminal to open the floorplan
