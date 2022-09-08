@@ -515,7 +515,7 @@ After the merging step the contents of the merged.nom.lef file should contain th
 Details of the gates used
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/gates.png">
 </p>
 
 Setup and Hold Slack after synthesis
@@ -531,7 +531,7 @@ Setup and Hold Slack after synthesis
 %   run_floorplan
 ```
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/floorplan.png">
 </p>
 
 #### Floorplan Report
@@ -583,7 +583,7 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
 #### Placement view
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement.png">
 </p>
 
 We can also locate the sky130_vsdinv in this view:
@@ -609,7 +609,7 @@ We can also locate the sky130_vsdinv in this view:
 ```
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/routing.png">
 </p>
 
 #### Routing Report
