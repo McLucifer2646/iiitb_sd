@@ -285,7 +285,7 @@ After this step,
 The spice netlist has to be edited to add the libraries we are using. To edit the spice netlist navigate to the ```vsdstdcelldesign``` directory and look for ```sky130_inv.spice``` file and edit it as shown below. 
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/spice.png">
 </p>
 
 
@@ -327,7 +327,7 @@ $   ngspice sky130_inv.spice
 ```
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/ngspice.png">
 </p>
 
 Now you can plot the graphs for the designed inverter model. Type the following command in the ngspice console.
@@ -337,7 +337,7 @@ Now you can plot the graphs for the designed inverter model. Type the following 
 ```
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/plot.png">
 </p>
 
 Four timing parameters are used to characterize the inverter standard cell:
@@ -359,7 +359,7 @@ To get a grid and to ensure the ports are placed correctly we can use this comma
 ```
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/inverter_grid.png">
 </p>
 
 To save the file with a different name, use the folllowing command in tcl window
@@ -404,7 +404,7 @@ Next copy ```iiitb_seq_det_moore_fsm.v```, ```sky130_fd_sc_hd__fast.lib```, ```s
 After this step your src folder should look like this:
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/src_folder.png">
 </p>
 
 Next we shall edit the ```cofig.json``` file
@@ -466,6 +466,10 @@ Save all the changes made above and navigate to the OpenLane folder in terminal 
 $   sudo make mount
 ```
 
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/mount.png">
+</p>
+
 After entering the openlane container give the following command for a step by step procedure:
 
 ```
@@ -487,13 +491,13 @@ The following commands are to merge the external lef files to the merged.nom.lef
 ```
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/container.png">
 </p>
 
 After the merging step the contents of the merged.nom.lef file should contain the Macro definition of sky130_vsdinv
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/vsdinv1.png">
 </p>
 
 
@@ -503,7 +507,7 @@ After the merging step the contents of the merged.nom.lef file should contain th
 %   run_synthesis
 ```
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/run_synthesis.png">
 </p>
 
 #### Synthesis Report
