@@ -518,11 +518,11 @@ Details of the gates used
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/gates.png">
 </p>
 
-Setup and Hold Slack after synthesis
+<!-- Setup and Hold Slack after synthesis
 
 <p align="center">
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
-</p>
+</p> -->
 
 
 ### Floorplan
@@ -553,14 +553,14 @@ Navigate to results -> floorplan and type the Magic command in terminal to open 
 magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read Sequence_Detector_MOORE_Verilog.def &
 ```
 
-<p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
-</p>
-
 #### Floorplan view
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/floorplan_1.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/floorplan_2.png">
 </p>
 
 ### Placement
@@ -576,9 +576,6 @@ Navigate to results->placement and type the Magic command in terminal to open th
 ```
 magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read Sequence_Detector_MOORE_Verilog.def &
 ```
-<p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
-</p>
 
 #### Placement view
 
@@ -589,7 +586,7 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
 We can also locate the sky130_vsdinv in this view:
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement_vsd.png">
 </p>
 
 ### Clock Tree Synthesis
@@ -599,7 +596,16 @@ We can also locate the sky130_vsdinv in this view:
 ```
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/cts_1234.png">
+</p>
+
+#### Timing analysis
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/cts_1.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/cts.png">
 </p>
 
 ### Routing
@@ -619,35 +625,25 @@ Navigate to results->routing and type the Magic command in terminal to open the 
 ```
 magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read Sequence_Detector_MOORE_Verilog.def &
 ```
-<p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
-</p>
 
 #### Routing view
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/routing_1.png">
 </p>
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/routing_111.png">
 </p>
-
-We can also locate the sky130_vsdinv in this view:
-
-<p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
-</p>
-
 **Area report by magic :**
 
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/routing_area.png">
 </p>
 
 **The sky130_vsdinv should also reflect in your netlist after routing**
 <p align="center">
-  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/routing_2.png">
 </p>
 
 
