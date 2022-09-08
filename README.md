@@ -637,6 +637,7 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
 <p align="center">
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/routing_111.png">
 </p>
+
 **Area report by magic :**
 
 <p align="center">
