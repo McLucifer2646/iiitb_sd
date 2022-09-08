@@ -486,6 +486,10 @@ The following commands are to merge the external lef files to the merged.nom.lef
 %   add_lefs -src $lefs
 ```
 
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
 After the merging step the contents of the merged.nom.lef file should contain the Macro definition of sky130_vsdinv
 
 <p align="center">
