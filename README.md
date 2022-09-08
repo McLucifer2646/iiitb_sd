@@ -588,6 +588,11 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
 We can also locate the sky130_vsdinv in this view:
 
 <p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement_2.png">
+</p>
+
+**The sky130_vsdinv should also reflect in your netlist after plcement**
+<p align="center">
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/placement_vsd.png">
 </p>
 
