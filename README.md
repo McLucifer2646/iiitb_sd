@@ -559,6 +559,8 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/floorplan_1.png">
 </p>
 
+Zoomed in view of Stacked components before placement.
+
 <p align="center">
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/floorplan_2.png">
 </p>
