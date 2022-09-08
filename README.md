@@ -373,9 +373,267 @@ $ lef write
 ### Preparatory Steps
 The layout for the design we have been working on can be created using OpenLANE. But before this we have to perform some preparatory steps to run our custom design in OpenLANE. Navigate to the openlane folder and run the following commands:
 
+```
+$   cd designs
+
+$   mkdir iiitb_sd
+
+$   cd iiitb_sd
+
+$   touch config.json
+
+$   mkdir src
+
+$   cd src
+```
+
+Next copy ```iiitb_seq_det_moore_fsm.v```, ```sky130_fd_sc_hd__fast.lib```, ```sky130_fd_sc_hd__slow.lib```, ```sky130_fd_sc_hd__typical.lib``` and ```sky130_vsdinv.lef``` in the src folder. The ```iiitb_seq_det_moore_fsm.v``` should be copied from the main repository, and the whole layout procedure will be carried out on this RTL design file.
+
+After this step your src folder should look like this:
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+Next we shall edit the ```cofig.json``` file
+
+```
+{
+    "DESIGN_NAME": "Sequence_Detector_MOORE_Verilog",
+    "VERILOG_FILES": "dir::src/iiitb_seq_det_moore_fsm.v",
+    "CLOCK_PORT": "clock",
+    "CLOCK_NET": "clock",
+    "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+    "CLOCK_PERIOD": 6,
+    "PL_TARGET_DENSITY": 0.5,
+    "FP_SIZING" : "relative",
+    "pdk::sky130*": {
+        "FP_CORE_UTIL": 5,
+        "scl::sky130_fd_sc_hd": {
+            "FP_CORE_UTIL": 5
+        }
+    },
+    
+    "LIB_SYNTH": "dir::src/sky130_fd_sc_hd__typical.lib",
+    "LIB_FASTEST": "dir::src/sky130_fd_sc_hd__fast.lib",
+    "LIB_SLOWEST": "dir::src/sky130_fd_sc_hd__slow.lib",
+    "LIB_TYPICAL": "dir::src/sky130_fd_sc_hd__typical.lib",  
+    "TEST_EXTERNAL_GLOB": "dir::../iiitb_sd/src/*",
+    "SYNTH_DRIVING_CELL":"sky130_vsdinv"
+
+}
+```
+
+In this file the ```DESIGN_NAME``` corresponds to the **name of the module** in your design file also note to change the ```CLOCK_PORT``` and ```CLOCK_NET``` variables as per clock used in your design file.
+
+### Errors in config.json
+
+Now the major part where I encountered a lot of errors was tweaking values in .json file based on the design files.
+
+**Mostly occurs in floorplan**
+```
+1) [ERROR PDN-0175] Pitch 5.04050 is too small for, must be atleast 6.6000
+```
+For these type of errors just try decreasing the values of: <br>
+```PL_TARGET_DENSITY``` to 0.6 or 0.5 <br>
+```FP_CORE_UTIL``` to half the current value and run the synthesis again <br>
+
+**Mostly occurs in placement**
+
+```
+2) [ERROR gpl-0306] RePlAce diverged at wire/density gradient Sum.
+```
+
+For these type of errors : <br>
+We can observe the ```worst slack``` value in red color and trying to bring it to a minimal value tending to zero will help us solve this error. This value can be fixed by reducing the ```CLOCK_PERIOD``` in .json file.
 
 
 
+Save all the changes made above and navigate to the OpenLane folder in terminal and run the following command :
+```
+$   sudo make mount
+```
+
+After entering the openlane container give the following command for a step by step procedure:
+
+```
+$   ./flow.tcl -interactive
+```
+
+This command will open the tcl console. In the tcl console type the following commands:
+```
+%   package require openlane 0.9
+
+%   prep -design iiitb_sd
+```
+The following commands are to merge the external lef files to the merged.nom.lef. In our case ```sky130_vsdiat.lef``` is the external .lef file that gets merged to the lef file.
+
+```
+%   set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+%   add_lefs -src $lefs
+```
+
+After the merging step the contents of the merged.nom.lef file should contain the Macro definition of sky130_vsdinv
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+
+### Synthesis
+
+```
+%   run_synthesis
+```
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+#### Synthesis Report
+
+Details of the gates used
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+Setup and Hold Slack after synthesis
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+
+### Floorplan
+
+```
+%   run_floorplan
+```
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+#### Floorplan Report
+
+**Die Area**:
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+**Core Area**:
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+Navigate to results -> floorplan and type the Magic command in terminal to open the floorplan
+```
+magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read Sequence_Detector_MOORE_Verilog.def &
+```
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+#### Floorplan view
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+### Placement
+
+```
+%   run_placement
+```
+
+#### Placement Report
+
+Navigate to results->placement and type the Magic command in terminal to open the placement view
+
+```
+magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read Sequence_Detector_MOORE_Verilog.def &
+```
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+#### Placement view
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+We can also locate the sky130_vsdinv in this view:
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+### Clock Tree Synthesis
+
+```
+%   run_cts
+```
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+### Routing
+
+```
+%   run_routing
+```
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+#### Routing Report
+
+Navigate to results->routing and type the Magic command in terminal to open the placement view
+
+```
+magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/sky130A.tech read ../../tmp/merged.nom.lef def read Sequence_Detector_MOORE_Verilog.def &
+```
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+#### Routing view
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+We can also locate the sky130_vsdinv in this view:
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+**Area report by magic :**
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+**The sky130_vsdinv should also reflect in your netlist after routing**
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Netlist.png">
+</p>
+
+
+## Author 
+
+- **Anshul Madurwar** 
 
 
 ## Contributors 
