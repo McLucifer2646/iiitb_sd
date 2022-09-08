@@ -180,6 +180,9 @@ $   sudo docker run hello-world
 
 *If the docker is successfully installed u will get a success message here*
 
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/docker_success.png">
+</p>
 
 ## OpenLANE Installation
 
