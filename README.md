@@ -375,7 +375,7 @@ $   magic -T sky130A.tech sky130_vsdinv.mag
 
 In the tcl window type the following command to generate sky130_vsdinv.lef
 ```
-$ lef write
+%   lef write
 ```
 
 *A new sky130_vsdinv.lef file be created in the current directory.*
