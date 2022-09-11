@@ -24,7 +24,11 @@ A sequence detector is a sequential circuit that has an output of HIGH if a spec
   <img width="900" height="250" src="/Images/IMG3.jpg">
 </p>
 
+## Schematic of Sequence Detector using VIVADO
 
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Schematic.png">
+</p>
 
 ## About iverilog 
 Icarus Verilog is a Verilog simulation and synthesis tool. It operates as a compiler, compiling source code written in Verilog (IEEE-1364) into some target format. For batch simulation, the compiler can generate an intermediate form called vvp assembly. This intermediate form is executed by the ``vvp'' command. For synthesis, the compiler generates netlists in the desired format.
