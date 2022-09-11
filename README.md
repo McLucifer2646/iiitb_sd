@@ -457,7 +457,7 @@ For these type of errors just try decreasing the values of: <br>
 **Mostly occurs in placement**
 
 ```
-2) [ERROR gpl-0306] RePlAce diverged at wire/density gradient Sum.
+2) [ERROR GPL-0306] RePlAce diverged at wire/density gradient Sum.
 ```
 
 For these type of errors : <br>
