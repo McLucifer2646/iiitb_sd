@@ -714,13 +714,13 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
 </p>
 
 ```
-Internal Power  = 1.08e-04 (85.4%)
+Internal Power  = 1.08e-04 W (85.4%)
 
-Switching Power = 1.84e-05 (14.6%)
+Switching Power = 1.84e-05 W (14.6%)
 
-Leakage Power   = 2.65e-10 (0.0%)
+Leakage Power   = 2.65e-10 W (0.0%)
 
-Total Power     = 1.26e-04 (100%)
+Total Power     = 1.26e-04 W (100%)
 ```
 
 ## Author 
