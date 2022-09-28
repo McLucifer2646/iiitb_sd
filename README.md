@@ -713,7 +713,7 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/PowerReport.png">
 </p>
 
-
+<pre>
 **Internal Power  = 1.08e-04 (85.4%)**
 
 **Switching Power = 1.84e-05 (14.6%)**
@@ -721,6 +721,7 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
 **Leakage Power   = 2.65e-10 (0.0%)**
 
 **Total Power     = 1.26e-04 (100%)**
+</pre>
 
 ## Author 
 
