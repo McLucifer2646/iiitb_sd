@@ -664,6 +664,63 @@ magic -T /home/anshul/Documents/iiitb_sd/OpenLane/pdks/sky130A/libs.tech/magic/s
   <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/routing_2.png">
 </p>
 
+## Results Post-Layout
+
+### 1. Post Layout synthesis gate count
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/gate_count.png">
+</p>
+
+**Gate Count = 14**
+
+### 2. Area (box command)
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Area.png">
+</p>
+
+**Area = 4878.272 um^2**
+
+### 3. Performance
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Performance_1.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Performance_2.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Performance_3.png">
+</p>
+
+**Performance = 1/(clock period - slack) = 1/(6 - 3.78)ns = 470.45 MHz**
+
+### 4. Flop/(Standard Cell Ratio)
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/Ratio.png">
+</p>
+
+
+**Flop Ratio = Ratio of total number of flip flops / Total number of cells present in the design = 3/14 = 0.214**
+
+### 5. Power (Internal, Switching, Leakage and Total)
+
+<p align="center">
+  <img src="https://github.com/McLucifer2646/iiitb_sd/blob/main/Images/PowerReport.png">
+</p>
+
+
+**Internal Power = 1.08e-04 (85.4%)**
+
+**Switching Power = 1.84e-05 (14.6%)**
+
+**Leakage Power = 2.65e-10 (0.0%)**
+
+**Total Power = 1.26e-04 (100%)**
 
 ## Author 
 
